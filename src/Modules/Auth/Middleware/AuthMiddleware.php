@@ -3,10 +3,11 @@
 namespace Modules\Auth\Middleware;
 
 use Modules\Auth\Service\AuthService;
+use Modules\Permission\Service\PermissionService;
 
 class AuthMiddleware
 {
-    public function __construct(private AuthService $auth)
+    public function __construct(private AuthService $auth, private PermissionService $perms)
     {
     }
 
@@ -20,6 +21,10 @@ class AuthMiddleware
         $user = $this->auth->currentUser();
         if (!$user) {
             return ['error' => 'unauthorized', 'status' => 401];
+        }
+          $perm = $request->getAttribute('permission');
+        if ($perm && !$this->perms->allow($user, $perm)) {
+            return ['error' => 'forbidden', 'status' => 403];
         }
         $request = $request->withAttribute('user', $user);
         return $handler($request);
