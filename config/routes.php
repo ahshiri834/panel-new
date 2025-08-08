@@ -1,6 +1,7 @@
 <?php
 
 use Modules\Auth\Controller\AuthController;
+use Modules\User\Controller\UserController;
 use Modules\Customer\Controller\CustomerController;
 
 $router->add('POST','/api/auth/login',[AuthController::class,'login']);
