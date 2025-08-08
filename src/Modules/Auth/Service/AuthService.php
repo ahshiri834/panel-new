@@ -4,7 +4,7 @@ namespace Modules\Auth\Service;
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
-use Modules\Auth\Repository\UserRepository;
+use Modules\User\Repository\UserRepository;
 
 class AuthService
 {
