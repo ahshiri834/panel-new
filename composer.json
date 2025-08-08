@@ -1,0 +1,19 @@
+{
+    "name": "project/panel-new",
+    "require": {
+        "firebase/php-jwt": "^6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\": "src/Modules/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    }
+}
